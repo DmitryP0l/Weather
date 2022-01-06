@@ -14,10 +14,10 @@ final class DailyWeatherCell: UITableViewCell {
     static let identifier = "DailyWeatherCell"
     
 //MARK: - Creating Views
-   private let conteinerView: UIView = {
+  let conteinerView: UIView = {
        let view = UIView()
         view.setCornerRadius(with: 5.0)
-        view.backgroundColor = .systemBlue
+      view.backgroundColor = .white
         return view
     }()
     
@@ -48,7 +48,7 @@ final class DailyWeatherCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         viewSetup()
-        backgroundColor = .lightGray
+        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -75,13 +75,16 @@ final class DailyWeatherCell: UITableViewCell {
         }
 
         dateLabel.snp.makeConstraints { make in
-            make.top.bottom.leading.equalToSuperview().inset(12)
+            make.top.bottom.leading.equalToSuperview().inset(16)
+            
         }
         
         tempLabel.snp.makeConstraints { make in
-            make.top.bottom.trailing.equalToSuperview().inset(12)
+            make.top.bottom.trailing.equalToSuperview().inset(16)
             make.leading.equalTo(dateLabel.snp.trailing).offset(12)
         }
+        
+        updateConstraints()
     }
     
     

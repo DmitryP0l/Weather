@@ -37,15 +37,14 @@ final class WeatherDetailsVC: UIViewController {
         }
         
         tableView.snp.makeConstraints { make in
-            make.bottom.trailing.leading.equalToSuperview().inset(10)
-            make.top.equalTo(dailyWeatherDetailsView.snp.bottom).offset(16)
+            make.bottom.trailing.leading.equalToSuperview()
+            make.top.equalTo(dailyWeatherDetailsView.snp.bottom)
             
         }
+        tableView.backgroundColor = .clear
+        tableView.setShadow()
         tableView.separatorStyle = .none
-        // попытка добавить тени для таблицы
-        tableView.layer.shadowColor = UIColor.red.cgColor
-        tableView.layer.shadowRadius = 1.0
-        tableView.layer.shadowOpacity = 10.0
+        
         
     }
     
@@ -54,6 +53,8 @@ final class WeatherDetailsVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(DailyWeatherCell.self, forCellReuseIdentifier: DailyWeatherCell.identifier)
+        tableView.contentInset.top = 16
+        tableView.rowHeight = UITableView.automaticDimension
         
     }
 }
@@ -61,9 +62,7 @@ final class WeatherDetailsVC: UIViewController {
 //MARK: - UITableViewDataSource, UITableViewDelegate
 extension WeatherDetailsVC: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
-    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return interactor.dataSource.count
@@ -73,30 +72,14 @@ extension WeatherDetailsVC: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: DailyWeatherCell.identifier, for: indexPath) as! DailyWeatherCell
         cell.dataModelCell = interactor.dataSource[indexPath.row]
+        
         // убираем визуал нажатия по ячейке
         cell.selectionStyle = .none
-        // уставливаем кастомный сепаратор из экстеншена
-        if indexPath.row > 0 {
-            cell.addSeparatorLine(color: .black, width: Int(view.frame.size.width), height: 2)
-        }
         
-        //закругляем выбранные края таблицы
-        let cornerRadius = 15
-        var corners: UIRectCorner = []
-        
-        if indexPath.row == 0 {
-            corners.update(with: .topLeft)
-            corners.update(with: .topRight)
+        // уставливаем кастомный сепаратор из экстеншена, кроме последней и если одна ячейка всего
+        if indexPath.row != interactor.dataSource.count - 1, interactor.dataSource.count > 1 {
+            cell.conteinerView.addSeparatorLine(color: .gray.withAlphaComponent(0.2), leading: 16, trailing: 0)
         }
-        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1 {
-            corners.update(with: .bottomLeft)
-            corners.update(with: .bottomRight)
-        }
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = UIBezierPath(roundedRect: cell.bounds,
-                                      byRoundingCorners: corners,
-                                      cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
-        cell.layer.mask = maskLayer
         
         return cell
     }

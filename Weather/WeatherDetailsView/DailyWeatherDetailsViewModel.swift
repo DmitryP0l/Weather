@@ -8,8 +8,8 @@
 import UIKit
 
 struct DailyWeatherDetailsViewModel {
-    let weatherImage: UIImage
-    let backgroungImage: UIImage
+    let weatherImageName: String
+    let backgroungImageNAme: String
     let dateString: String
     let temperatureString: String
     let weatherConditionString: String

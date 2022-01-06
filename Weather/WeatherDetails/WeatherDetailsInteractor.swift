@@ -11,7 +11,7 @@ final class WeatherDetailsInteractor: NSObject {
     weak var vc: WeatherDetailsVC?
     
     let dataSource: [DailyWeatherCellModel] =
-    [DailyWeatherCellModel(dateString: "day", tempMinString: "1", tempMaxString: "10"),
+    [DailyWeatherCellModel(dateString: "yyy", tempMinString: "1", tempMaxString: "10"),
      DailyWeatherCellModel(dateString: "day", tempMinString: "2", tempMaxString: "20"),
      DailyWeatherCellModel(dateString: "day", tempMinString: "1", tempMaxString: "10"),
      DailyWeatherCellModel(dateString: "day", tempMinString: "1", tempMaxString: "10"),

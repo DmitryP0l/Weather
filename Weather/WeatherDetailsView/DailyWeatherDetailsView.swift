@@ -64,8 +64,8 @@ final class DailyWeatherDetailsView: UIView {
     
     
     private func compleateDataView() {
-        backgroungImageView.image = dataModelView?.backgroungImage
-        weatherImageView.image = dataModelView?.weatherImage
+        backgroungImageView.image = UIImage(named: dataModelView?.backgroungImageNAme ?? "")
+        weatherImageView.image = UIImage(named: dataModelView?.weatherImageName ?? "")
         dateLabel.text = dataModelView?.dateString
         temperatureLabel.text = dataModelView?.temperatureString
         weatherConditionLabel.text = dataModelView?.weatherConditionString

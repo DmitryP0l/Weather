@@ -13,15 +13,34 @@ extension UIView {
         layer.cornerRadius = radius
         clipsToBounds = true
     }
-}
 
 
-
-extension UITableViewCell {
-    func addSeparatorLine(color: UIColor, width: Int, height: Int){
-        let lineFrame = CGRect(x: 0, y: 0, width: width, height: height)
-        let line = UIView(frame: lineFrame)
-        line.backgroundColor = color
+    func addSeparatorLine(color: UIColor, leading: Int, trailing: Int){
+        let line = UIView()
         addSubview(line)
+        line.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.bottom.equalToSuperview()
+            make.leading.equalToSuperview().inset(leading)
+            make.trailing.equalToSuperview().inset(trailing)
+        }
+        
+        line.backgroundColor = color
     }
+ 
+    func setShadow(color: UIColor = .gray, opacity: Float = 0.5, offSet: CGSize = .zero, radius: CGFloat = 15) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offSet
+        layer.shadowRadius = radius
+    }
+    
+    func customCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
+    
 }
+
