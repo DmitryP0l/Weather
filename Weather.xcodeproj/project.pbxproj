@@ -19,6 +19,10 @@
 		B495D787278307D7003E7B01 /* Extension UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495D786278307D7003E7B01 /* Extension UIView.swift */; };
 		B495D78927859F4D003E7B01 /* DailyWeatherDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495D78827859F4D003E7B01 /* DailyWeatherDetailsView.swift */; };
 		B495D78E2785C84A003E7B01 /* DailyWeatherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495D78D2785C84A003E7B01 /* DailyWeatherDetailsViewModel.swift */; };
+		B495D79027877F3A003E7B01 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495D78F27877F3A003E7B01 /* TabBarViewController.swift */; };
+		B495D794278781E7003E7B01 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495D793278781E7003E7B01 /* SettingsViewController.swift */; };
+		B495D79927878414003E7B01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495D79827878414003E7B01 /* MapViewController.swift */; };
+		B495D79C278A22E4003E7B01 /* FavoritsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B495D79B278A22E4003E7B01 /* FavoritsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		B495D786278307D7003E7B01 /* Extension UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension UIView.swift"; sourceTree = "<group>"; };
 		B495D78827859F4D003E7B01 /* DailyWeatherDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherDetailsView.swift; sourceTree = "<group>"; };
 		B495D78D2785C84A003E7B01 /* DailyWeatherDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyWeatherDetailsViewModel.swift; sourceTree = "<group>"; };
+		B495D78F27877F3A003E7B01 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		B495D793278781E7003E7B01 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B495D79827878414003E7B01 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B495D79B278A22E4003E7B01 /* FavoritsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritsViewController.swift; sourceTree = "<group>"; };
 		F4CB4B241804BB5FDF82FC21 /* Pods_Weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,9 +101,13 @@
 			isa = PBXGroup;
 			children = (
 				B495D7852783079E003E7B01 /* Extensions */,
+				B495D79A278A22A6003E7B01 /* FavoritsView */,
+				B495D795278783C8003E7B01 /* MapView */,
+				B495D792278781A8003E7B01 /* SettingsView */,
 				B495D78C2785C7F1003E7B01 /* WeatherDetailsView */,
 				B495D77A2782F44B003E7B01 /* Cell */,
 				B495D7792782F431003E7B01 /* WeatherDetails */,
+				B495D791278780A7003E7B01 /* TabBar */,
 				B495D7782782F408003E7B01 /* Support */,
 				B495D7722782F371003E7B01 /* Info.plist */,
 			);
@@ -146,6 +158,38 @@
 				B495D78D2785C84A003E7B01 /* DailyWeatherDetailsViewModel.swift */,
 			);
 			path = WeatherDetailsView;
+			sourceTree = "<group>";
+		};
+		B495D791278780A7003E7B01 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				B495D78F27877F3A003E7B01 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		B495D792278781A8003E7B01 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				B495D793278781E7003E7B01 /* SettingsViewController.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
+		B495D795278783C8003E7B01 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				B495D79827878414003E7B01 /* MapViewController.swift */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
+		B495D79A278A22A6003E7B01 /* FavoritsView */ = {
+			isa = PBXGroup;
+			children = (
+				B495D79B278A22E4003E7B01 /* FavoritsViewController.swift */,
+			);
+			path = FavoritsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,12 +308,16 @@
 			files = (
 				B495D7692782F36F003E7B01 /* WeatherDetailsVC.swift in Sources */,
 				B495D7652782F36F003E7B01 /* AppDelegate.swift in Sources */,
+				B495D794278781E7003E7B01 /* SettingsViewController.swift in Sources */,
 				B495D78427830109003E7B01 /* DailyWeatherCellModel.swift in Sources */,
 				B495D78E2785C84A003E7B01 /* DailyWeatherDetailsViewModel.swift in Sources */,
 				B495D77C2782F85D003E7B01 /* WeatherDetailsInteractor.swift in Sources */,
 				B495D78927859F4D003E7B01 /* DailyWeatherDetailsView.swift in Sources */,
+				B495D79927878414003E7B01 /* MapViewController.swift in Sources */,
+				B495D79C278A22E4003E7B01 /* FavoritsViewController.swift in Sources */,
 				B495D7672782F36F003E7B01 /* SceneDelegate.swift in Sources */,
 				B495D78227830047003E7B01 /* DailyWeatherCell.swift in Sources */,
+				B495D79027877F3A003E7B01 /* TabBarViewController.swift in Sources */,
 				B495D787278307D7003E7B01 /* Extension UIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

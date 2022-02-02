@@ -9,12 +9,26 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func setCornerRadius(with radius: Double) {
-        layer.cornerRadius = radius
-        clipsToBounds = true
-    }
-
-
+    
+  
+    //MARK: - extension. Custom Corners
+    func addRoundCorners(corners: [UIRectCorner], cornerRadius: CGFloat) {
+            
+            var _corners: UIRectCorner = []
+            
+            corners.forEach { (corner) in
+                _corners.update(with: corner)
+            }
+        
+            let maskLayer = CAShapeLayer()
+            maskLayer.path = UIBezierPath(roundedRect: self.bounds,
+                                          byRoundingCorners: _corners,
+                                          cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
+            self.layer.mask = maskLayer
+        }
+    
+    
+    //MARK: - extension. Custom separator
     func addSeparatorLine(color: UIColor, leading: Int, trailing: Int){
         let line = UIView()
         addSubview(line)
@@ -24,10 +38,10 @@ extension UIView {
             make.leading.equalToSuperview().inset(leading)
             make.trailing.equalToSuperview().inset(trailing)
         }
-        
         line.backgroundColor = color
+        
     }
- 
+    //MARK: - extension. Custom Shadow
     func setShadow(color: UIColor = .gray, opacity: Float = 0.5, offSet: CGSize = .zero, radius: CGFloat = 15) {
         layer.shadowColor = color.cgColor
         layer.shadowOpacity = opacity
@@ -35,12 +49,8 @@ extension UIView {
         layer.shadowRadius = radius
     }
     
-    func customCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        self.layer.mask = mask
-    }
+   
     
 }
+
 

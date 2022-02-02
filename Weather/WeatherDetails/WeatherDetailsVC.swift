@@ -25,6 +25,8 @@ final class WeatherDetailsVC: UIViewController {
         viewSetup()
         tableViewSetup()
     }
+
+    
     
 //MARK: - viewSetup, makeConstraints
     private func viewSetup() {
@@ -41,6 +43,7 @@ final class WeatherDetailsVC: UIViewController {
             make.top.equalTo(dailyWeatherDetailsView.snp.bottom)
             
         }
+        
         tableView.backgroundColor = .clear
         tableView.setShadow()
         tableView.separatorStyle = .none
@@ -62,14 +65,11 @@ final class WeatherDetailsVC: UIViewController {
 //MARK: - UITableViewDataSource, UITableViewDelegate
 extension WeatherDetailsVC: UITableViewDataSource, UITableViewDelegate {
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return interactor.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: DailyWeatherCell.identifier, for: indexPath) as! DailyWeatherCell
         cell.dataModelCell = interactor.dataSource[indexPath.row]
         
@@ -80,6 +80,23 @@ extension WeatherDetailsVC: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row != interactor.dataSource.count - 1, interactor.dataSource.count > 1 {
             cell.conteinerView.addSeparatorLine(color: .gray.withAlphaComponent(0.2), leading: 16, trailing: 0)
         }
+        
+        
+        
+        // устанавливаем кастомные радиусы для контейнера ячеек( первой и последней)
+        if indexPath.row == 0 {
+            DispatchQueue.main.async {
+                cell.conteinerView.addRoundCorners(corners: [.topLeft, .topRight], cornerRadius: 13.0)
+            }
+        }
+        
+        if indexPath.row == interactor.dataSource.count - 1 {
+            DispatchQueue.main.async {
+                cell.conteinerView.addRoundCorners(corners: [.bottomLeft, .bottomRight], cornerRadius: 13.0)
+            }
+        }
+        
+        
         
         return cell
     }

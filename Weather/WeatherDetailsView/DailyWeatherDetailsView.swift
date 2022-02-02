@@ -11,9 +11,15 @@ final class DailyWeatherDetailsView: UIView {
     
  //MARK: - Creating Views
     private let containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .blue
-        view.setCornerRadius(with: 15)
+        var view = UIView()
+        view.backgroundColor = .orange
+        
+        DispatchQueue.main.async {
+            view.addRoundCorners(corners: [.topRight, .topLeft, .bottomRight], cornerRadius: 10.0)
+        }
+        
+
+       
         return view
     }()
     
@@ -50,8 +56,7 @@ final class DailyWeatherDetailsView: UIView {
             compleateDataView()
         }
     }
-    
-    
+
         init() {
         super.init(frame: .zero)
         backgroundColor = .systemBlue
@@ -60,6 +65,10 @@ final class DailyWeatherDetailsView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
     
     

@@ -16,7 +16,6 @@ final class DailyWeatherCell: UITableViewCell {
 //MARK: - Creating Views
   let conteinerView: UIView = {
        let view = UIView()
-        view.setCornerRadius(with: 5.0)
       view.backgroundColor = .white
         return view
     }()
